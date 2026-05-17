@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+
+  # MongoDB Database
+  mongodb:
+    image: mongo:6
+    container_name: nfch-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - nfch-network
+
+  # Express Backend
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/nfchpost
+      - PORT=5000
+    depends_on:
+      - mongodb
+    networks:
+      - nfch-network
+
+  # React Frontend
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nfch-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - nfch-network
+
+networks:
+  nfch-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:

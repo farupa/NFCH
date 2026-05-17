@@ -11,7 +11,7 @@ dotenv.config();
 const app = express();
 
 // ── Middleware ────────────────────────────────────────
-app.use(cors({ origin: 'http://localhost:3000' }));
+app.use(cors({ origin: '*' }));
 app.use(express.json());
 
 // ── Cloudinary config ─────────────────────────────────
@@ -82,8 +82,9 @@ app.post('/api/posts', upload.single('image'), async (req, res) => {
 });
 
 // ── Connect DB & Start Server ─────────────────────────
-mongoose
-  .connect(process.env.MONGODB_URI)
+
+  mongoose
+  .connect(process.env.MONGODB_URI || 'mongodb://mongodb:27017/nfchpost')
   .then(() => {
     console.log('✅ MongoDB connected');
     const PORT = process.env.PORT || 5000;

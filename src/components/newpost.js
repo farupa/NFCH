@@ -42,7 +42,7 @@ function NewPost() {
       if (image) formData.append('image', image);
 
       // TODO: replace URL with your real backend URL
-      const res = await fetch('http://localhost:5000/api/posts', {
+      const res = await fetch('/api/posts', {
         method: 'POST',
         body: formData,
       });
