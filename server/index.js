@@ -86,7 +86,7 @@ app.post('/api/posts', upload.single('image'), async (req, res) => {
   mongoose
   .connect(process.env.MONGODB_URI || 'mongodb://mongodb:27017/nfchpost')
   .then(() => {
-    console.log('✅ MongoDB connected');
+    console.log('✅ MongoDB connected to:', process.env.MONGODB_URI);
     const PORT = process.env.PORT || 5000;
     app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
   })

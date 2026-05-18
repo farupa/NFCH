@@ -19,10 +19,8 @@ services:
       context: ./server
       dockerfile: Dockerfile
     environment:
-      - MONGODB_URI=mongodb://mongodb:27017/nfchpost
+      - MONGODB_URI=mongodb+srv://nfchuser:nfch1234@cluster0.ztdgpst.mongodb.net/nfchpost?appName=Cluster0
       - PORT=5000
-    depends_on:
-      - mongodb
     networks:
       - nfch-network
 
