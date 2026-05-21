@@ -53,6 +53,7 @@ function uploadToCloudinary(buffer) {
 
 // GET all posts (newest first)
 app.get('/api/posts', async (req, res) => {
+  console.log(`📨 GET request handled by container: ${process.env.HOSTNAME}`);
   try {
     const { type } = req.query;
     const filter = type ? { type } : {};
@@ -65,14 +66,13 @@ app.get('/api/posts', async (req, res) => {
 
 // POST create a new post
 app.post('/api/posts', upload.single('image'), async (req, res) => {
+  console.log(`📨 POST request handled by container: ${process.env.HOSTNAME}`);
   try {
     const { type, text, author } = req.body;
-
     let imageUrl = null;
     if (req.file) {
       imageUrl = await uploadToCloudinary(req.file.buffer);
     }
-
     const post = await Post.create({ type, text, author, imageUrl });
     res.status(201).json(post);
   } catch (err) {

@@ -36,7 +36,7 @@ function Home() {
     <div className="home">
       {/* Hero */}
       <div className="hero">
-        <h1 className="hero-title">Welcome to NFCH Hall</h1>
+        <h1 className="hero-title">Welcome to NFC Hall</h1>
         <p className="hero-sub">
           A safe space to share complaints, advice, and seek help from your fellow residents 🌸
         </p>
