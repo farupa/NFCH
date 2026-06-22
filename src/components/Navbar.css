@@ -111,3 +111,25 @@
 
   .navbar-links.open { display: flex; }
 }
+.nav-user {
+  font-size: 0.85rem;
+  color: #c2185b;
+  font-weight: 600;
+}
+
+.nav-logout {
+  background: none;
+  border: 1.5px solid #f8bbd0;
+  color: #c2185b;
+  border-radius: 20px;
+  padding: 0.4rem 1rem;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.nav-logout:hover {
+  background: #fce4ec;
+}

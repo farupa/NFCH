@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './newpost.css';
 
@@ -10,13 +10,27 @@ const TYPES = [
 
 function NewPost() {
   const navigate = useNavigate();
-  const [type, setType]         = useState('');
-  const [text, setText]         = useState('');
-  const [author, setAuthor]     = useState('');
-  const [image, setImage]       = useState(null);
-  const [preview, setPreview]   = useState(null);
-  const [loading, setLoading]   = useState(false);
-  const [error, setError]       = useState('');
+  const [type, setType]       = useState('');
+  const [text, setText]       = useState('');
+  const [image, setImage]     = useState(null);
+  const [preview, setPreview] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError]     = useState('');
+  const [user, setUser]       = useState(null);
+
+  useEffect(() => {
+    // Check if user is logged in
+    const token    = localStorage.getItem('token');
+    const userData = localStorage.getItem('user');
+
+    if (!token || !userData) {
+      // Not logged in → redirect to login
+      navigate('/login');
+      return;
+    }
+
+    setUser(JSON.parse(userData));
+  }, [navigate]);
 
   const handleImage = (e) => {
     const file = e.target.files[0];
@@ -35,34 +49,56 @@ function NewPost() {
     setLoading(true);
 
     try {
+      const token = localStorage.getItem('token');
+
       const formData = new FormData();
-      formData.append('type',   type);
-      formData.append('text',   text);
-      formData.append('author', author || 'Anonymous');
+      formData.append('type', type);
+      formData.append('text', text);
       if (image) formData.append('image', image);
 
-      // TODO: replace URL with your real backend URL
       const res = await fetch('/api/posts', {
         method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        },
         body: formData,
       });
+
+      if (res.status === 401) {
+        // Token expired → redirect to login
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        navigate('/login');
+        return;
+      }
 
       if (!res.ok) throw new Error('Failed to submit');
 
       navigate('/');
-   } catch (err) {
-  console.error(err);
-  setError('Something went wrong. Please try again.');
-} finally {
+
+    } catch (err) {
+      console.error(err);
+      setError('Something went wrong. Please try again.');
+    } finally {
       setLoading(false);
     }
   };
+
+  // Show nothing while checking login
+  if (!user) return null;
 
   return (
     <div className="new-post-wrap">
       <div className="new-post-card">
         <h2 className="np-title">🌸 Create a New Post</h2>
         <p className="np-sub">Share with your fellow hall residents</p>
+
+        {/* Show logged in user info */}
+        <div className="np-user-info">
+          <span>🌸 {user.name}</span>
+          <span>🏠 Room {user.roomNumber}</span>
+          <span>💺 Seat {user.seatNumber}</span>
+        </div>
 
         <form onSubmit={handleSubmit} className="np-form">
 
@@ -81,17 +117,6 @@ function NewPost() {
               </button>
             ))}
           </div>
-
-          {/* Name */}
-          <label className="np-label" htmlFor="author">Your Name (optional)</label>
-          <input
-            id="author"
-            type="text"
-            className="np-input"
-            placeholder="Anonymous"
-            value={author}
-            onChange={e => setAuthor(e.target.value)}
-          />
 
           {/* Text */}
           <label className="np-label" htmlFor="text">Your Message</label>
@@ -124,6 +149,7 @@ function NewPost() {
           <button type="submit" className="np-submit" disabled={loading}>
             {loading ? 'Posting…' : '🌸 Submit Post'}
           </button>
+
         </form>
       </div>
     </div>

@@ -67,3 +67,15 @@
   color: #c2185b;
   font-weight: 600;
 }
+.post-footer {
+  border-top: 1px solid #f8bbd0;
+  padding-top: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.post-room {
+  font-size: 0.78rem;
+  color: #b07090;
+}

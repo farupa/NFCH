@@ -1,10 +1,20 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 
 function Navbar() {
   const location = useLocation();
+  const navigate  = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const user  = JSON.parse(localStorage.getItem('user') || 'null');
+  const token = localStorage.getItem('token');
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    navigate('/login');
+  };
 
   return (
     <nav className="navbar">
@@ -14,7 +24,7 @@ function Navbar() {
           <span className="brand-text">NFCH Hall</span>
         </Link>
 
-        <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)} aria-label="menu">
+        <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
           <span /><span /><span />
         </button>
 
@@ -26,13 +36,29 @@ function Navbar() {
           >
             🏠 Home
           </Link>
-          <Link
-            to="/new-post"
-            className="nav-btn"
-            onClick={() => setMenuOpen(false)}
-          >
-            ✏️ New Post
-          </Link>
+
+          {token ? (
+            <>
+              <span className="nav-user">
+                🌸 {user?.name} | Room {user?.roomNumber}
+              </span>
+              <Link
+                to="/new-post"
+                className="nav-btn"
+                onClick={() => setMenuOpen(false)}
+              >
+                ✏️ New Post
+              </Link>
+              <button className="nav-logout" onClick={handleLogout}>
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link to="/login" className="nav-link">Login</Link>
+              <Link to="/register" className="nav-btn">🌸 Register</Link>
+            </>
+          )}
         </div>
       </div>
     </nav>

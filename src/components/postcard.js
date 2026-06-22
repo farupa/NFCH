@@ -34,7 +34,14 @@ function PostCard({ post }) {
       <p className="post-text">{post.text}</p>
 
       <div className="post-footer">
-        <span className="post-author">🌸 {post.author || 'Anonymous'}</span>
+        <span className="post-author">
+          🌸 {post.author}
+        </span>
+        {post.roomNumber && (
+          <span className="post-room">
+            🏠 Room {post.roomNumber} · Seat {post.seatNumber}
+          </span>
+        )}
       </div>
     </div>
   );

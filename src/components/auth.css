@@ -1,0 +1,122 @@
+.auth-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.auth-card {
+  background: white;
+  border: 1.5px solid #f8bbd0;
+  border-radius: 20px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 8px 40px rgba(194, 24, 91, 0.1);
+}
+
+.auth-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: #c2185b;
+  margin-bottom: 0.3rem;
+}
+
+.auth-sub {
+  color: #b07090;
+  font-size: 0.95rem;
+  margin-bottom: 1.8rem;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.auth-label {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #6d2b4a;
+}
+
+.auth-input {
+  width: 100%;
+  border: 1.5px solid #f8bbd0;
+  border-radius: 12px;
+  padding: 0.7rem 1rem;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  color: #3d0026;
+  background: #fff5f8;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.auth-input:focus {
+  border-color: #e91e8c;
+  box-shadow: 0 0 0 3px rgba(233, 30, 140, 0.1);
+}
+
+.auth-error {
+  background: #ffebee;
+  color: #c62828;
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+  font-size: 0.88rem;
+  border: 1px solid #ffcdd2;
+}
+
+.auth-btn {
+  background: linear-gradient(135deg, #e91e8c, #c2185b);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  padding: 0.9rem;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: 'Nunito', sans-serif;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 18px rgba(194, 24, 91, 0.3);
+  margin-top: 0.4rem;
+}
+
+.auth-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(194, 24, 91, 0.4);
+}
+
+.auth-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.auth-switch {
+  text-align: center;
+  font-size: 0.88rem;
+  color: #b07090;
+  margin-top: 0.5rem;
+}
+
+.auth-switch a {
+  color: #c2185b;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.auth-switch a:hover {
+  text-decoration: underline;
+}
+
+.np-user-info {
+  display: flex;
+  gap: 1rem;
+  background: #fce4ec;
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+  font-size: 0.88rem;
+  color: #c2185b;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
