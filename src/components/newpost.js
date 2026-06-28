@@ -56,7 +56,7 @@ function NewPost() {
       formData.append('text', text);
       if (image) formData.append('image', image);
 
-      const res = await fetch('/api/posts', {
+      const res = await fetch('https://nfch-backend.onrender.com/api/posts', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`

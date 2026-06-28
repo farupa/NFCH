@@ -19,7 +19,7 @@ function Home() {
   useEffect(() => {
     // TODO: Replace this with real API call:
     // fetch('/api/posts').then(r => r.json()).then(data => setPosts(data))
-    fetch('/api/posts')
+    fetch('https://nfch-backend.onrender.com/api/posts')
   .then(r => r.json())
   .then(data => {
     setPosts(data);
