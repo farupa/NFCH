@@ -128,3 +128,51 @@ mongoose
     app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
   })
   .catch(err => console.error('❌ MongoDB error:', err));
+
+  // Canteen Model
+const canteenSchema = new mongoose.Schema({
+  itemName:  { type: String, required: true },
+  rating:    { type: String, enum: ['good', 'moderate', 'bad', 'worst'], required: true },
+  comment:   { type: String, default: '' },
+  author:    { type: String, default: 'Anonymous' },
+  roomNumber:{ type: String, default: null },
+  imageData: { type: String, default: null },
+  createdAt: { type: Date, default: Date.now },
+});
+
+const Canteen = mongoose.model('Canteen', canteenSchema);
+
+// GET canteen posts
+app.get('/api/canteen', async (req, res) => {
+  try {
+    const posts = await Canteen.find().sort({ createdAt: -1 });
+    res.json(posts);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch' });
+  }
+});
+
+// POST canteen feedback
+app.post('/api/canteen', authMiddleware, upload.single('image'), async (req, res) => {
+  try {
+    const { itemName, rating, comment } = req.body;
+    const author     = req.user.name;
+    const roomNumber = req.user.roomNumber;
+
+    let imageData = null;
+    if (req.file) {
+      const base64  = req.file.buffer.toString('base64');
+      const mime    = req.file.mimetype;
+      imageData     = `data:${mime};base64,${base64}`;
+    }
+
+    const post = await Canteen.create({
+      itemName, rating, comment,
+      author, roomNumber, imageData
+    });
+
+    res.status(201).json(post);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to create' });
+  }
+});

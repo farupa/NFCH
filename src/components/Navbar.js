@@ -29,29 +29,29 @@ function Navbar() {
         </button>
 
         <div className={`navbar-links ${menuOpen ? 'open' : ''}`}>
-          <Link
-            to="/"
-            className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}
-            onClick={() => setMenuOpen(false)}
-          >
+          <Link to="/" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`} onClick={() => setMenuOpen(false)}>
             🏠 Home
+          </Link>
+
+          <Link to="/hall-committee" className={`nav-link ${location.pathname === '/hall-committee' ? 'active' : ''}`} onClick={() => setMenuOpen(false)}>
+            🏛️ হল সংসদ
+          </Link>
+
+          <Link to="/alumni" className={`nav-link ${location.pathname === '/alumni' ? 'active' : ''}`} onClick={() => setMenuOpen(false)}>
+            🎓 Alumni
+          </Link>
+
+          <Link to="/canteen" className={`nav-link ${location.pathname === '/canteen' ? 'active' : ''}`} onClick={() => setMenuOpen(false)}>
+            🍽️ Canteen
           </Link>
 
           {token ? (
             <>
-              <span className="nav-user">
-                🌸 {user?.name} | Room {user?.roomNumber}
-              </span>
-              <Link
-                to="/new-post"
-                className="nav-btn"
-                onClick={() => setMenuOpen(false)}
-              >
+              <span className="nav-user">🌸 {user?.name}</span>
+              <Link to="/new-post" className="nav-btn" onClick={() => setMenuOpen(false)}>
                 ✏️ New Post
               </Link>
-              <button className="nav-logout" onClick={handleLogout}>
-                Logout
-              </button>
+              <button className="nav-logout" onClick={handleLogout}>Logout</button>
             </>
           ) : (
             <>

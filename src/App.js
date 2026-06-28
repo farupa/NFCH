@@ -1,10 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar   from './components/Navbar';
-import Home     from './components/home';
-import NewPost  from './components/newpost';
-import Register from './components/register';
-import Login    from './components/login';
+import Navbar        from './components/Navbar';
+import Home          from './components/home';
+import NewPost       from './components/newpost';
+import Register      from './components/register';
+import Login         from './components/login';
+import HallCommittee from './components/HallCommittee';
+import Alumni        from './components/Alumni';
+import Canteen       from './components/Canteen';
 import './App.css';
 
 function App() {
@@ -14,10 +17,13 @@ function App() {
         <Navbar />
         <main className="main-content">
           <Routes>
-            <Route path="/"          element={<Home />} />
-            <Route path="/new-post"  element={<NewPost />} />
-            <Route path="/register"  element={<Register />} />
-            <Route path="/login"     element={<Login />} />
+            <Route path="/"               element={<Home />} />
+            <Route path="/new-post"       element={<NewPost />} />
+            <Route path="/register"       element={<Register />} />
+            <Route path="/login"          element={<Login />} />
+            <Route path="/hall-committee" element={<HallCommittee />} />
+            <Route path="/alumni"         element={<Alumni />} />
+            <Route path="/canteen"        element={<Canteen />} />
           </Routes>
         </main>
       </div>

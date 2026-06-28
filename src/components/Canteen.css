@@ -1,0 +1,233 @@
+.canteen-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.canteen-hero {
+  text-align: center;
+  background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(252,228,236,0.6));
+  border: 1.5px solid #f8bbd0;
+  border-radius: 20px;
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+}
+
+.canteen-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #c2185b;
+  margin-bottom: 0.3rem;
+}
+
+.canteen-sub { color: #b07090; }
+
+.canteen-form-card {
+  background: white;
+  border: 1.5px solid #f8bbd0;
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 18px rgba(194,24,91,0.07);
+}
+
+.canteen-form-title {
+  color: #c2185b;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.canteen-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.c-label {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #6d2b4a;
+}
+
+.c-input, .c-textarea {
+  width: 100%;
+  border: 1.5px solid #f8bbd0;
+  border-radius: 12px;
+  padding: 0.7rem 1rem;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  color: #3d0026;
+  background: #fff5f8;
+  outline: none;
+  transition: border-color 0.2s;
+  resize: vertical;
+}
+
+.c-input:focus, .c-textarea:focus {
+  border-color: #e91e8c;
+}
+
+.rating-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+}
+
+.rating-btn {
+  border: 1.5px solid #f8bbd0;
+  border-radius: 10px;
+  padding: 0.5rem 0.3rem;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: #fff5f8;
+  color: #6d2b4a;
+  transition: all 0.2s;
+}
+
+.rating-btn:hover { border-color: #e91e8c; }
+
+.c-upload {
+  display: block;
+  border: 2px dashed #f48fb1;
+  border-radius: 14px;
+  cursor: pointer;
+  overflow: hidden;
+  background: #fff5f8;
+}
+
+.c-upload-placeholder {
+  padding: 1.5rem;
+  text-align: center;
+  color: #b07090;
+  font-size: 0.9rem;
+}
+
+.c-preview {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.c-error {
+  background: #ffebee;
+  color: #c62828;
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+  font-size: 0.88rem;
+}
+
+.c-submit {
+  background: linear-gradient(135deg, #e91e8c, #c2185b);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  padding: 0.9rem;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: 'Nunito', sans-serif;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(194,24,91,0.3);
+}
+
+.canteen-login-notice {
+  background: #fce4ec;
+  border-radius: 14px;
+  padding: 1rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #c2185b;
+}
+
+.canteen-login-notice a { color: #c2185b; font-weight: 700; }
+
+.canteen-posts-title {
+  font-family: 'Playfair Display', serif;
+  color: #c2185b;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+.canteen-posts {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.canteen-empty {
+  text-align: center;
+  color: #b07090;
+  padding: 2rem;
+}
+
+.canteen-post-card {
+  background: white;
+  border: 1.5px solid #f8bbd0;
+  border-radius: 16px;
+  padding: 1.2rem;
+  box-shadow: 0 4px 18px rgba(194,24,91,0.07);
+}
+
+.canteen-post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.8rem;
+}
+
+.canteen-item-name {
+  font-size: 1rem;
+  color: #3d0026;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.canteen-rating {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.canteen-date {
+  font-size: 0.78rem;
+  color: #b07090;
+}
+
+.canteen-img-wrap {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  max-height: 220px;
+  margin-bottom: 0.8rem;
+}
+
+.canteen-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.canteen-comment {
+  font-size: 0.95rem;
+  color: #3d0026;
+  margin-bottom: 0.8rem;
+  line-height: 1.6;
+}
+
+.canteen-footer {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.82rem;
+  color: #c2185b;
+  font-weight: 600;
+  border-top: 1px solid #f8bbd0;
+  padding-top: 0.6rem;
+}
+
+@media (max-width: 500px) {
+  .rating-grid { grid-template-columns: repeat(2, 1fr); }
+}
