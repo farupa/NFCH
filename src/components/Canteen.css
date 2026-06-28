@@ -6,35 +6,41 @@
 
 .canteen-hero {
   text-align: center;
-  background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(252,228,236,0.6));
-  border: 1.5px solid #f8bbd0;
+  background: linear-gradient(135deg, #BEEBE9 0%, #FFE3ED 100%);
+  border: 1.5px solid #9BE3DE;
   border-radius: 20px;
   padding: 2rem 1rem;
   margin-bottom: 2rem;
+  box-shadow: 0 4px 24px rgba(155, 227, 222, 0.2);
 }
 
 .canteen-title {
   font-family: 'Playfair Display', serif;
   font-size: 2rem;
-  color: #c2185b;
+  color: #1A3C3A;
   margin-bottom: 0.3rem;
+  font-weight: 700;
 }
 
-.canteen-sub { color: #b07090; }
+.canteen-sub {
+  color: #3D6B68;
+}
 
+/* Form card */
 .canteen-form-card {
   background: white;
-  border: 1.5px solid #f8bbd0;
+  border: 1.5px solid #BEEBE9;
   border-radius: 16px;
   padding: 1.5rem;
   margin-bottom: 2rem;
-  box-shadow: 0 4px 18px rgba(194,24,91,0.07);
+  box-shadow: 0 4px 18px rgba(155, 227, 222, 0.15);
 }
 
 .canteen-form-title {
-  color: #c2185b;
+  color: #1A3C3A;
   margin-bottom: 1rem;
   font-size: 1.1rem;
+  font-weight: 700;
 }
 
 .canteen-form {
@@ -46,27 +52,31 @@
 .c-label {
   font-size: 0.88rem;
   font-weight: 700;
-  color: #6d2b4a;
+  color: #3D6B68;
 }
 
-.c-input, .c-textarea {
+.c-input,
+.c-textarea {
   width: 100%;
-  border: 1.5px solid #f8bbd0;
+  border: 1.5px solid #BEEBE9;
   border-radius: 12px;
   padding: 0.7rem 1rem;
   font-family: 'Nunito', sans-serif;
   font-size: 0.95rem;
-  color: #3d0026;
-  background: #fff5f8;
+  color: #1A3C3A;
+  background: #FFFDF9;
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
   resize: vertical;
 }
 
-.c-input:focus, .c-textarea:focus {
-  border-color: #e91e8c;
+.c-input:focus,
+.c-textarea:focus {
+  border-color: #9BE3DE;
+  box-shadow: 0 0 0 3px rgba(155, 227, 222, 0.25);
 }
 
+/* Rating buttons */
 .rating-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -74,33 +84,43 @@
 }
 
 .rating-btn {
-  border: 1.5px solid #f8bbd0;
+  border: 1.5px solid #BEEBE9;
   border-radius: 10px;
   padding: 0.5rem 0.3rem;
   font-family: 'Nunito', sans-serif;
   font-size: 0.82rem;
   font-weight: 700;
   cursor: pointer;
-  background: #fff5f8;
-  color: #6d2b4a;
+  background: #FFFDF9;
+  color: #3D6B68;
   transition: all 0.2s;
 }
 
-.rating-btn:hover { border-color: #e91e8c; }
+.rating-btn:hover {
+  border-color: #9BE3DE;
+  background: #BEEBE9;
+}
 
+/* Upload */
 .c-upload {
   display: block;
-  border: 2px dashed #f48fb1;
+  border: 2px dashed #9BE3DE;
   border-radius: 14px;
   cursor: pointer;
   overflow: hidden;
-  background: #fff5f8;
+  background: #FFFDF9;
+  transition: all 0.2s;
+}
+
+.c-upload:hover {
+  border-color: #5BBFB8;
+  background: #BEEBE9;
 }
 
 .c-upload-placeholder {
   padding: 1.5rem;
   text-align: center;
-  color: #b07090;
+  color: #7AADA9;
   font-size: 0.9rem;
 }
 
@@ -112,15 +132,16 @@
 }
 
 .c-error {
-  background: #ffebee;
-  color: #c62828;
+  background: #FFE3ED;
+  color: #E8799A;
   border-radius: 10px;
   padding: 0.6rem 1rem;
   font-size: 0.88rem;
+  border: 1px solid #F9B8CD;
 }
 
 .c-submit {
-  background: linear-gradient(135deg, #e91e8c, #c2185b);
+  background: linear-gradient(135deg, #9BE3DE, #5BBFB8);
   color: white;
   border: none;
   border-radius: 14px;
@@ -129,23 +150,40 @@
   font-weight: 700;
   font-family: 'Nunito', sans-serif;
   cursor: pointer;
-  box-shadow: 0 4px 18px rgba(194,24,91,0.3);
+  box-shadow: 0 4px 18px rgba(155, 227, 222, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
+.c-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(155, 227, 222, 0.5);
+}
+
+.c-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* Login notice */
 .canteen-login-notice {
-  background: #fce4ec;
+  background: #BEEBE9;
   border-radius: 14px;
   padding: 1rem;
   text-align: center;
   margin-bottom: 2rem;
-  color: #c2185b;
+  color: #3A9E97;
+  font-weight: 600;
 }
 
-.canteen-login-notice a { color: #c2185b; font-weight: 700; }
+.canteen-login-notice a {
+  color: #3A9E97;
+  font-weight: 700;
+}
 
+/* Posts */
 .canteen-posts-title {
   font-family: 'Playfair Display', serif;
-  color: #c2185b;
+  color: #1A3C3A;
   margin-bottom: 1rem;
   font-size: 1.4rem;
 }
@@ -158,16 +196,22 @@
 
 .canteen-empty {
   text-align: center;
-  color: #b07090;
+  color: #7AADA9;
   padding: 2rem;
 }
 
 .canteen-post-card {
   background: white;
-  border: 1.5px solid #f8bbd0;
+  border: 1.5px solid #BEEBE9;
   border-radius: 16px;
   padding: 1.2rem;
-  box-shadow: 0 4px 18px rgba(194,24,91,0.07);
+  box-shadow: 0 4px 18px rgba(155, 227, 222, 0.12);
+  transition: transform 0.2s;
+}
+
+.canteen-post-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(155, 227, 222, 0.25);
 }
 
 .canteen-post-header {
@@ -179,7 +223,7 @@
 
 .canteen-item-name {
   font-size: 1rem;
-  color: #3d0026;
+  color: #1A3C3A;
   font-weight: 700;
   margin-bottom: 0.3rem;
 }
@@ -194,7 +238,7 @@
 
 .canteen-date {
   font-size: 0.78rem;
-  color: #b07090;
+  color: #7AADA9;
 }
 
 .canteen-img-wrap {
@@ -214,7 +258,7 @@
 
 .canteen-comment {
   font-size: 0.95rem;
-  color: #3d0026;
+  color: #1A3C3A;
   margin-bottom: 0.8rem;
   line-height: 1.6;
 }
@@ -223,9 +267,9 @@
   display: flex;
   gap: 1rem;
   font-size: 0.82rem;
-  color: #c2185b;
+  color: #3A9E97;
   font-weight: 600;
-  border-top: 1px solid #f8bbd0;
+  border-top: 1px solid #BEEBE9;
   padding-top: 0.6rem;
 }
 

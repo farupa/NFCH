@@ -6,23 +6,24 @@
 
 .auth-card {
   background: white;
-  border: 1.5px solid #f8bbd0;
+  border: 1.5px solid #BEEBE9;
   border-radius: 20px;
   padding: 2.5rem;
   width: 100%;
   max-width: 480px;
-  box-shadow: 0 8px 40px rgba(194, 24, 91, 0.1);
+  box-shadow: 0 8px 40px rgba(155, 227, 222, 0.2);
 }
 
 .auth-title {
   font-family: 'Playfair Display', serif;
   font-size: 1.8rem;
-  color: #c2185b;
+  color: #1A3C3A;
   margin-bottom: 0.3rem;
+  font-weight: 700;
 }
 
 .auth-sub {
-  color: #b07090;
+  color: #7AADA9;
   font-size: 0.95rem;
   margin-bottom: 1.8rem;
 }
@@ -36,38 +37,38 @@
 .auth-label {
   font-size: 0.88rem;
   font-weight: 700;
-  color: #6d2b4a;
+  color: #3D6B68;
 }
 
 .auth-input {
   width: 100%;
-  border: 1.5px solid #f8bbd0;
+  border: 1.5px solid #BEEBE9;
   border-radius: 12px;
   padding: 0.7rem 1rem;
   font-family: 'Nunito', sans-serif;
   font-size: 0.95rem;
-  color: #3d0026;
-  background: #fff5f8;
+  color: #1A3C3A;
+  background: #FFFDF9;
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .auth-input:focus {
-  border-color: #e91e8c;
-  box-shadow: 0 0 0 3px rgba(233, 30, 140, 0.1);
+  border-color: #9BE3DE;
+  box-shadow: 0 0 0 3px rgba(155, 227, 222, 0.25);
 }
 
 .auth-error {
-  background: #ffebee;
-  color: #c62828;
+  background: #FFE3ED;
+  color: #E8799A;
   border-radius: 10px;
   padding: 0.6rem 1rem;
   font-size: 0.88rem;
-  border: 1px solid #ffcdd2;
+  border: 1px solid #F9B8CD;
 }
 
 .auth-btn {
-  background: linear-gradient(135deg, #e91e8c, #c2185b);
+  background: linear-gradient(135deg, #9BE3DE, #5BBFB8);
   color: white;
   border: none;
   border-radius: 14px;
@@ -76,14 +77,14 @@
   font-weight: 700;
   font-family: 'Nunito', sans-serif;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 4px 18px rgba(194, 24, 91, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+  box-shadow: 0 4px 18px rgba(155, 227, 222, 0.4);
   margin-top: 0.4rem;
 }
 
 .auth-btn:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(194, 24, 91, 0.4);
+  box-shadow: 0 8px 28px rgba(155, 227, 222, 0.5);
 }
 
 .auth-btn:disabled {
@@ -94,12 +95,12 @@
 .auth-switch {
   text-align: center;
   font-size: 0.88rem;
-  color: #b07090;
+  color: #7AADA9;
   margin-top: 0.5rem;
 }
 
 .auth-switch a {
-  color: #c2185b;
+  color: #3A9E97;
   font-weight: 700;
   text-decoration: none;
 }
@@ -111,12 +112,12 @@
 .np-user-info {
   display: flex;
   gap: 1rem;
-  background: #fce4ec;
+  background: #BEEBE9;
   border-radius: 10px;
   padding: 0.6rem 1rem;
   font-size: 0.88rem;
-  color: #c2185b;
-  font-weight: 600;
+  color: #3A9E97;
+  font-weight: 700;
   margin-bottom: 1rem;
   flex-wrap: wrap;
 }

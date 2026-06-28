@@ -1,9 +1,9 @@
 .post-card {
-  background: #fff5f8;
-  border: 1.5px solid #f8bbd0;
+  background: #FFFFFF;
+  border: 1.5px solid #BEEBE9;
   border-radius: 16px;
   padding: 1.2rem 1.4rem;
-  box-shadow: 0 4px 18px rgba(194, 24, 91, 0.07);
+  box-shadow: 0 4px 18px rgba(155, 227, 222, 0.15);
   transition: transform 0.22s, box-shadow 0.22s;
   display: flex;
   flex-direction: column;
@@ -12,7 +12,7 @@
 
 .post-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 32px rgba(194, 24, 91, 0.14);
+  box-shadow: 0 10px 32px rgba(155, 227, 222, 0.3);
 }
 
 .post-card-header {
@@ -32,7 +32,7 @@
 
 .post-date {
   font-size: 0.78rem;
-  color: #b07090;
+  color: #7AADA9;
 }
 
 .post-image-wrap {
@@ -44,7 +44,7 @@
 
 .post-image {
   width: 100%;
-  height: 100%;
+  height: 240px;
   object-fit: cover;
   display: block;
 }
@@ -52,30 +52,24 @@
 .post-text {
   font-size: 0.97rem;
   line-height: 1.65;
-  color: #3d0026;
+  color: #1A3C3A;
 }
 
 .post-footer {
-  border-top: 1px solid #f8bbd0;
-  padding-top: 0.6rem;
-  display: flex;
-  align-items: center;
-}
-
-.post-author {
-  font-size: 0.82rem;
-  color: #c2185b;
-  font-weight: 600;
-}
-.post-footer {
-  border-top: 1px solid #f8bbd0;
+  border-top: 1px solid #BEEBE9;
   padding-top: 0.6rem;
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
 }
 
+.post-author {
+  font-size: 0.85rem;
+  color: #3A9E97;
+  font-weight: 700;
+}
+
 .post-room {
   font-size: 0.78rem;
-  color: #b07090;
+  color: #7AADA9;
 }
