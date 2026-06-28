@@ -45,19 +45,20 @@
   box-shadow: 0 10px 32px rgba(194,24,91,0.14);
 }
 
+.alumni-photo {
+  width: 120px;
+  height: 160px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 3px solid white;
+  box-shadow: 0 4px 12px rgba(194,24,91,0.2);
+}
+
 .alumni-photo-wrap {
-  position: relative;
   background: linear-gradient(135deg, #fce4ec, #f8bbd0);
   padding: 1.5rem;
   text-align: center;
-}
-
-.alumni-photo {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid white;
+  position: relative;
 }
 
 .alumni-badge {

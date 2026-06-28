@@ -80,7 +80,14 @@ function HallCommittee() {
         {COMMITTEE.map((member, index) => (
           <div key={index} className="hc-card">
             <div className="hc-photo-wrap">
-              <img src={member.photo} alt={member.name} className="hc-photo" />
+              <img
+  src={member.photo}
+  alt={member.name}
+  className="hc-photo"
+  onError={(e) => {
+    e.target.src = 'https://via.placeholder.com/120x160?text=Photo';
+  }}
+/>
               <span className="hc-icon">{member.icon}</span>
             </div>
             <div className="hc-info">
@@ -95,5 +102,7 @@ function HallCommittee() {
     </div>
   );
 }
+
+
 
 export default HallCommittee;

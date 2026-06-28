@@ -82,7 +82,14 @@ function Alumni() {
         {COMMITTEE.map((member, index) => (
           <div key={index} className="alumni-card">
             <div className="alumni-photo-wrap">
-              <img src={member.photo} alt={member.name} className="alumni-photo" />
+              <img
+  src={member.photo}
+  alt={member.name}
+  className="alumni-photo"
+  onError={(e) => {
+    e.target.src = 'https://via.placeholder.com/120x160?text=Photo';
+  }}
+/>
               <span className="alumni-badge">{member.post}</span>
             </div>
             <div className="alumni-info">
@@ -101,5 +108,7 @@ function Alumni() {
     </div>
   );
 }
+
+
 
 export default Alumni;
