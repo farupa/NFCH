@@ -19,7 +19,7 @@ function Canteen() {
   const [error, setError]       = useState('');
 
   const token = localStorage.getItem('token');
-  const user  = JSON.parse(localStorage.getItem('user') || 'null');
+
 
   useEffect(() => {
     fetchPosts();
