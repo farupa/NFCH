@@ -3,9 +3,7 @@ const mongoose   = require('mongoose');
 const cors       = require('cors');
 const dotenv     = require('dotenv');
 const multer     = require('multer');
-const cloudinary = require('cloudinary').v2;
-const { Readable } = require('stream');
-const authRoutes = require('./routes/auth');
+const authRoutes     = require('./routes/auth');
 const authMiddleware = require('./middleware/auth');
 
 dotenv.config();
@@ -14,19 +12,17 @@ const app = express();
 
 // ── Middleware ────────────────────────────────────────
 app.use(cors({ origin: '*' }));
-app.use(express.json());
-// Auth routes
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ limit: '10mb', extended: true }));
+
+// ── Auth routes ───────────────────────────────────────
 app.use('/api/auth', authRoutes);
 
-// ── Cloudinary config ─────────────────────────────────
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key:    process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
+// ── Multer (store in memory) ──────────────────────────
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: 5 * 1024 * 1024 } // 5MB limit
 });
-
-// ── Multer (store in memory, then send to Cloudinary) ─
-const upload = multer({ storage: multer.memoryStorage() });
 
 // ── MongoDB Post Model ────────────────────────────────
 const postSchema = new mongoose.Schema({
@@ -35,25 +31,12 @@ const postSchema = new mongoose.Schema({
   author:     { type: String, default: 'Anonymous' },
   roomNumber: { type: String, default: null },
   seatNumber: { type: String, default: null },
-  imageUrl:   { type: String, default: null },
+  imageData:  { type: String, default: null }, // Base64 image stored here
+  status:     { type: String, enum: ['pending', 'reviewing', 'resolved'], default: 'pending' },
   createdAt:  { type: Date, default: Date.now },
 });
 
 const Post = mongoose.model('Post', postSchema);
-
-// ── Helper: upload buffer to Cloudinary ──────────────
-function uploadToCloudinary(buffer) {
-  return new Promise((resolve, reject) => {
-    const stream = cloudinary.uploader.upload_stream(
-      { folder: 'nfch-hall' },
-      (error, result) => {
-        if (error) reject(error);
-        else resolve(result.secure_url);
-      }
-    );
-    Readable.from(buffer).pipe(stream);
-  });
-}
 
 // ── Routes ────────────────────────────────────────────
 
@@ -72,6 +55,7 @@ app.get('/api/posts', async (req, res) => {
 
 // POST create a new post
 app.post('/api/posts', authMiddleware, upload.single('image'), async (req, res) => {
+  console.log(`📨 POST request handled by container: ${process.env.HOSTNAME}`);
   try {
     const { type, text } = req.body;
 
@@ -80,9 +64,12 @@ app.post('/api/posts', authMiddleware, upload.single('image'), async (req, res) 
     const roomNumber = req.user.roomNumber;
     const seatNumber = req.user.seatNumber;
 
-    let imageUrl = null;
+    // Convert image to Base64 and store in MongoDB
+    let imageData = null;
     if (req.file) {
-      imageUrl = await uploadToCloudinary(req.file.buffer);
+      const base64   = req.file.buffer.toString('base64');
+      const mimeType = req.file.mimetype;
+      imageData = `data:${mimeType};base64,${base64}`;
     }
 
     const post = await Post.create({
@@ -91,7 +78,7 @@ app.post('/api/posts', authMiddleware, upload.single('image'), async (req, res) 
       author,
       roomNumber,
       seatNumber,
-      imageUrl
+      imageData,
     });
 
     res.status(201).json(post);
@@ -102,9 +89,38 @@ app.post('/api/posts', authMiddleware, upload.single('image'), async (req, res) 
   }
 });
 
-// ── Connect DB & Start Server ─────────────────────────
+// Admin - get all posts
+app.get('/api/admin/posts', authMiddleware, async (req, res) => {
+  try {
+    if (!req.user.isAdmin) {
+      return res.status(403).json({ error: 'Access denied' });
+    }
+    const posts = await Post.find().sort({ createdAt: -1 });
+    res.json(posts);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch posts' });
+  }
+});
 
-  mongoose
+// Admin - update post status
+app.patch('/api/admin/posts/:id', authMiddleware, async (req, res) => {
+  try {
+    if (!req.user.isAdmin) {
+      return res.status(403).json({ error: 'Access denied' });
+    }
+    const post = await Post.findByIdAndUpdate(
+      req.params.id,
+      { status: req.body.status },
+      { new: true }
+    );
+    res.json(post);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to update post' });
+  }
+});
+
+// ── Connect DB & Start Server ─────────────────────────
+mongoose
   .connect(process.env.MONGODB_URI || 'mongodb://mongodb:27017/nfchpost')
   .then(() => {
     console.log('✅ MongoDB connected to:', process.env.MONGODB_URI);

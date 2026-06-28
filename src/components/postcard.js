@@ -25,9 +25,9 @@ function PostCard({ post }) {
         <span className="post-date">{date}</span>
       </div>
 
-      {post.imageUrl && (
+      {post.imageData && (
         <div className="post-image-wrap">
-          <img src={post.imageUrl} alt="post" className="post-image" />
+          <img src={post.imageData} alt="post" className="post-image" />
         </div>
       )}
 
