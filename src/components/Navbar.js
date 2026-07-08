@@ -20,7 +20,7 @@ function Navbar() {
     <nav className="navbar">
       <div className="navbar-inner">
         <Link to="/" className="navbar-brand">
-          <span className="brand-icon">🌸</span>
+          <span className="brand-icon">✦</span>
           <span className="brand-text">NFCH Hall</span>
         </Link>
 
@@ -30,33 +30,41 @@ function Navbar() {
 
         <div className={`navbar-links ${menuOpen ? 'open' : ''}`}>
           <Link to="/" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`} onClick={() => setMenuOpen(false)}>
-            🏠 Home
+            Home
           </Link>
 
           <Link to="/hall-committee" className={`nav-link ${location.pathname === '/hall-committee' ? 'active' : ''}`} onClick={() => setMenuOpen(false)}>
-            🏛️ হল সংসদ
+            হল সংসদ
           </Link>
 
           <Link to="/alumni" className={`nav-link ${location.pathname === '/alumni' ? 'active' : ''}`} onClick={() => setMenuOpen(false)}>
-            🎓 Alumni
+            Alumni
+          </Link>
+
+          <Link to="/office" className={`nav-link ${location.pathname === '/office' ? 'active' : ''}`} onClick={() => setMenuOpen(false)}>
+            Office
+          </Link>
+
+          <Link to="/housetutors" className={`nav-link ${location.pathname === '/housetutors' ? 'active' : ''}`} onClick={() => setMenuOpen(false)}>
+            House Tutors
           </Link>
 
           <Link to="/canteen" className={`nav-link ${location.pathname === '/canteen' ? 'active' : ''}`} onClick={() => setMenuOpen(false)}>
-            🍽️ Canteen
+            Canteen
           </Link>
 
           {token ? (
             <>
-              <span className="nav-user">🌸 {user?.name}</span>
+              <span className="nav-user">{user?.name}</span>
               <Link to="/new-post" className="nav-btn" onClick={() => setMenuOpen(false)}>
-                ✏️ New Post
+                New Post
               </Link>
               <button className="nav-logout" onClick={handleLogout}>Logout</button>
             </>
           ) : (
             <>
               <Link to="/login" className="nav-link">Login</Link>
-              <Link to="/register" className="nav-btn">🌸 Register</Link>
+              <Link to="/register" className="nav-btn">Register</Link>
             </>
           )}
         </div>

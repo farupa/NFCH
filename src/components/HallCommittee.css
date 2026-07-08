@@ -113,3 +113,16 @@
   margin: 0.2rem 0;
 }
 
+.hc-photo {
+  width: 120px;
+  height: 160px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 3px solid #BEEBE9;
+  background-color: #BEEBE9;
+  display: block;
+  /* Fix blinking */
+  will-change: auto;
+  transform: translateZ(0);
+}
+

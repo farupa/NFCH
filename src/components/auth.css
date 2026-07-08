@@ -121,3 +121,16 @@
   margin-bottom: 1rem;
   flex-wrap: wrap;
 }
+
+.alumni-photo {
+  width: 120px;
+  height: 160px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 3px solid white;
+  background-color: #9BE3DE;
+  display: block;
+  /* Fix blinking */
+  will-change: auto;
+  transform: translateZ(0);
+}

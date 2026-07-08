@@ -1,0 +1,233 @@
+.office-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.office-hero {
+  text-align: center;
+  background: linear-gradient(160deg, #BEEBE9 0%, #FFFDF9 60%, #FFE3ED 100%);
+  border: 1.5px solid #9BE3DE;
+  border-radius: 20px;
+  padding: 2.5rem 1rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 4px 24px rgba(155, 227, 222, 0.2);
+}
+
+.office-tag {
+  display: inline-block;
+  background: #9BE3DE;
+  color: #1A3C3A;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.office-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.9rem;
+  color: #1A3C3A;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.office-sub {
+  color: #3D6B68;
+  font-size: 0.95rem;
+}
+
+.office-section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: #1A3C3A;
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.office-section-title::after {
+  content: '';
+  flex: 1;
+  height: 1.5px;
+  background: linear-gradient(to right, #BEEBE9, transparent);
+}
+
+/* Officer card - larger, featured */
+.office-officer-card {
+  background: white;
+  border: 1.5px solid #BEEBE9;
+  border-radius: 18px;
+  padding: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 6px 24px rgba(155, 227, 222, 0.2);
+}
+
+.office-photo-wrap {
+  flex-shrink: 0;
+}
+
+.office-photo {
+  width: 100px;
+  height: 130px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 3px solid #BEEBE9;
+  background-color: #BEEBE9;
+  display: block;
+}
+
+.office-photo.large {
+  width: 130px;
+  height: 170px;
+  border: 4px solid #9BE3DE;
+  box-shadow: 0 6px 20px rgba(155, 227, 222, 0.35);
+}
+
+.office-officer-info {
+  flex: 1;
+}
+
+/* Grid for assistants */
+.office-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 2.5rem;
+}
+
+.office-card {
+  background: white;
+  border: 1.5px solid #BEEBE9;
+  border-radius: 16px;
+  padding: 1.4rem;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.office-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(155, 227, 222, 0.25);
+}
+
+.office-card .office-photo-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.8rem;
+}
+
+.office-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1A3C3A;
+  margin-bottom: 0.3rem;
+}
+
+.office-post {
+  font-size: 0.82rem;
+  color: #3A9E97;
+  font-weight: 600;
+}
+
+/* Complaint box */
+.office-complaint-card {
+  background: white;
+  border: 1.5px solid #F9B8CD;
+  border-radius: 18px;
+  padding: 1.8rem;
+  box-shadow: 0 6px 24px rgba(249, 184, 205, 0.2);
+}
+
+.office-complaint-title {
+  font-family: 'Playfair Display', serif;
+  color: #1A3C3A;
+  font-size: 1.15rem;
+  margin-bottom: 0.4rem;
+}
+
+.office-complaint-sub {
+  color: #7AADA9;
+  font-size: 0.88rem;
+  margin-bottom: 1.2rem;
+}
+
+.office-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.office-textarea {
+  width: 100%;
+  border: 1.5px solid #F9B8CD;
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.92rem;
+  color: #1A3C3A;
+  background: #FFFDF9;
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.office-textarea:focus {
+  border-color: #E8799A;
+  box-shadow: 0 0 0 3px rgba(249, 184, 205, 0.3);
+}
+
+.office-error {
+  background: #FFE3ED;
+  color: #E8799A;
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+  font-size: 0.85rem;
+  border: 1px solid #F9B8CD;
+}
+
+.office-success {
+  background: #BEEBE9;
+  color: #3A9E97;
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.office-submit {
+  background: linear-gradient(135deg, #F9B8CD, #E8799A);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 0.8rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: 'Nunito', sans-serif;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(232, 121, 154, 0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.office-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(232, 121, 154, 0.45);
+}
+
+.office-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+@media (max-width: 500px) {
+  .office-officer-card {
+    flex-direction: column;
+    text-align: center;
+  }
+}

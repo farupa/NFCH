@@ -119,6 +119,126 @@ app.patch('/api/admin/posts/:id', authMiddleware, async (req, res) => {
   }
 });
 
+
+// ─────────────────────────────────────────────────────
+// ADD THIS TO server/index.js
+// Paste this BEFORE the mongoose.connect() section at the bottom
+// ─────────────────────────────────────────────────────
+
+// ── Office Complaint Model ────────────────────────────
+const officeComplaintSchema = new mongoose.Schema({
+  text:       { type: String, required: true },
+  author:     { type: String, default: 'Anonymous' },
+  roomNumber: { type: String, default: null },
+  seatNumber: { type: String, default: null },
+  status:     { type: String, enum: ['pending', 'reviewing', 'resolved'], default: 'pending' },
+  createdAt:  { type: Date, default: Date.now },
+});
+const OfficeComplaint = mongoose.model('OfficeComplaint', officeComplaintSchema);
+
+// ── Tutor Message Model ───────────────────────────────
+const tutorMessageSchema = new mongoose.Schema({
+  tutorName:  { type: String, required: true },
+  text:       { type: String, required: true },
+  author:     { type: String, default: 'Anonymous' },
+  roomNumber: { type: String, default: null },
+  seatNumber: { type: String, default: null },
+  createdAt:  { type: Date, default: Date.now },
+});
+const TutorMessage = mongoose.model('TutorMessage', tutorMessageSchema);
+
+// ── Office Complaint Routes ────────────────────────────
+
+// POST a new office complaint (student)
+app.post('/api/office-complaints', authMiddleware, async (req, res) => {
+  try {
+    const { text } = req.body;
+    if (!text || !text.trim()) {
+      return res.status(400).json({ error: 'Complaint text is required' });
+    }
+
+    const complaint = await OfficeComplaint.create({
+      text,
+      author:     req.user.name,
+      roomNumber: req.user.roomNumber,
+      seatNumber: req.user.seatNumber,
+    });
+
+    res.status(201).json(complaint);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to submit complaint' });
+  }
+});
+
+// GET all office complaints (admin only)
+app.get('/api/office-complaints', authMiddleware, async (req, res) => {
+  try {
+    if (!req.user.isAdmin) {
+      return res.status(403).json({ error: 'Access denied' });
+    }
+    const complaints = await OfficeComplaint.find().sort({ createdAt: -1 });
+    res.json(complaints);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch complaints' });
+  }
+});
+
+// PATCH update office complaint status (admin only)
+app.patch('/api/office-complaints/:id', authMiddleware, async (req, res) => {
+  try {
+    if (!req.user.isAdmin) {
+      return res.status(403).json({ error: 'Access denied' });
+    }
+    const complaint = await OfficeComplaint.findByIdAndUpdate(
+      req.params.id,
+      { status: req.body.status },
+      { new: true }
+    );
+    res.json(complaint);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to update complaint' });
+  }
+});
+
+// ── Tutor Message Routes ───────────────────────────────
+
+// POST a new message to a house tutor (student)
+app.post('/api/tutor-messages', authMiddleware, async (req, res) => {
+  try {
+    const { tutorName, text } = req.body;
+    if (!tutorName || !text || !text.trim()) {
+      return res.status(400).json({ error: 'Tutor name and message are required' });
+    }
+
+    const message = await TutorMessage.create({
+      tutorName,
+      text,
+      author:     req.user.name,
+      roomNumber: req.user.roomNumber,
+      seatNumber: req.user.seatNumber,
+    });
+
+    res.status(201).json(message);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to send message' });
+  }
+});
+
+// GET all tutor messages (admin only)
+app.get('/api/tutor-messages', authMiddleware, async (req, res) => {
+  try {
+    if (!req.user.isAdmin) {
+      return res.status(403).json({ error: 'Access denied' });
+    }
+    const messages = await TutorMessage.find().sort({ createdAt: -1 });
+    res.json(messages);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch messages' });
+  }
+});
+
 // ── Connect DB & Start Server ─────────────────────────
 mongoose
   .connect(process.env.MONGODB_URI || 'mongodb://mongodb:27017/nfchpost')

@@ -7,64 +7,64 @@ const COMMITTEE = [
     name:  'আপনার নাম লিখুন',
     dept:  'আপনার বিভাগ',
     batch: '২০২১',
-    photo: 'https://via.placeholder.com/150x150?text=Photo',
-    icon:  '👑'
+    photo: '/images/placeholder.svg',
+    
   },
   {
     post:  'সহ-সভাপতি (Vice President)',
     name:  'আপনার নাম লিখুন',
     dept:  'আপনার বিভাগ',
     batch: '২০২১',
-    photo: 'https://via.placeholder.com/150x150?text=Photo',
-    icon:  '🌟'
+    photo: '/images/placeholder.svg',
+    
   },
   {
-    post:  'সাধারণ সম্পাদক (GS)',
+    post:  'সাধারণ সম্পদক (GS)',
     name:  'আপনার নাম লিখুন',
     dept:  'আপনার বিভাগ',
     batch: '২০২১',
-    photo: 'https://via.placeholder.com/150x150?text=Photo',
-    icon:  '📋'
+    photo: '/images/placeholder.svg',
+    
   },
   {
-    post:  'সহ-সাধারণ সম্পাদক (AGS)',
+    post:  'সহ-সাধারণ সম্পদক (AGS)',
     name:  'আপনার নাম লিখুন',
     dept:  'আপনার বিভাগ',
     batch: '২০২১',
-    photo: 'https://via.placeholder.com/150x150?text=Photo',
-    icon:  '📝'
+    photo: '/images/placeholder.svg',
+    
   },
   {
     post:  'কোষাধ্যক্ষ (Treasurer)',
     name:  'আপনার নাম লিখুন',
     dept:  'আপনার বিভাগ',
     batch: '২০২১',
-    photo: 'https://via.placeholder.com/150x150?text=Photo',
-    icon:  '💰'
+    photo: '/images/placeholder.svg',
+    
   },
   {
     post:  'সদস্য (Member)',
     name:  'আপনার নাম লিখুন',
     dept:  'আপনার বিভাগ',
     batch: '২০২১',
-    photo: 'https://via.placeholder.com/150x150?text=Photo',
-    icon:  '🌸'
+    photo: '/images/placeholder.svg',
+    
   },
   {
     post:  'সদস্য (Member)',
     name:  'আপনার নাম লিখুন',
     dept:  'আপনার বিভাগ',
     batch: '২০২১',
-    photo: 'https://via.placeholder.com/150x150?text=Photo',
-    icon:  '🌸'
+    photo: '/images/placeholder.svg',
+    
   },
   {
     post:  'সদস্য (Member)',
     name:  'আপনার নাম লিখুন',
     dept:  'আপনার বিভাগ',
     batch: '২০২১',
-    photo: 'https://via.placeholder.com/150x150?text=Photo',
-    icon:  '🌸'
+    photo: '/images/placeholder.svg',
+    
   },
 ];
 
@@ -85,8 +85,8 @@ function HallCommittee() {
   alt={member.name}
   className="hc-photo"
   onError={(e) => {
-    e.target.src = 'https://via.placeholder.com/120x160?text=Photo';
-  }}
+  e.target.src = '/images/placeholder.svg';
+}}
 />
               <span className="hc-icon">{member.icon}</span>
             </div>

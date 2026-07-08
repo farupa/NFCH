@@ -10,8 +10,8 @@ const COMMITTEE = [
     batch:   '2018',
     session: '2018-19',
     dept:    'CSE',
-    photo:   'https://via.placeholder.com/150x150?text=Photo',
-    icon:    '👑'
+    photo:   '/images/placeholder.svg',
+    
   },
   {
     post:    'Vice President',
@@ -21,8 +21,8 @@ const COMMITTEE = [
     batch:   '2017',
     session: '2017-18',
     dept:    'Physics',
-    photo:   'https://via.placeholder.com/150x150?text=Photo',
-    icon:    '🌟'
+    photo:   '/images/placeholder.svg',
+    
   },
   {
     post:    'Secretary',
@@ -32,8 +32,8 @@ const COMMITTEE = [
     batch:   '2019',
     session: '2019-20',
     dept:    'Mathematics',
-    photo:   'https://via.placeholder.com/150x150?text=Photo',
-    icon:    '📋'
+    photo:   '/images/placeholder.svg',
+    
   },
   {
     post:    'Treasurer',
@@ -43,8 +43,8 @@ const COMMITTEE = [
     batch:   '2018',
     session: '2018-19',
     dept:    'Economics',
-    photo:   'https://via.placeholder.com/150x150?text=Photo',
-    icon:    '💰'
+    photo:   '/images/placeholder.svg',
+    
   },
   {
     post:    'Member',
@@ -54,8 +54,8 @@ const COMMITTEE = [
     batch:   '2020',
     session: '2020-21',
     dept:    'EEE',
-    photo:   'https://via.placeholder.com/150x150?text=Photo',
-    icon:    '🌸'
+    photo:   '/images/placeholder.svg',
+    
   },
   {
     post:    'Member',
@@ -65,8 +65,8 @@ const COMMITTEE = [
     batch:   '2019',
     session: '2019-20',
     dept:    'Law',
-    photo:   'https://via.placeholder.com/150x150?text=Photo',
-    icon:    '🌸'
+    photo:   '/images/placeholder.svg',
+    
   },
 ];
 
@@ -87,8 +87,8 @@ function Alumni() {
   alt={member.name}
   className="alumni-photo"
   onError={(e) => {
-    e.target.src = 'https://via.placeholder.com/120x160?text=Photo';
-  }}
+  e.target.src = '/images/placeholder.svg';
+}}
 />
               <span className="alumni-badge">{member.post}</span>
             </div>
