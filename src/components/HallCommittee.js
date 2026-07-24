@@ -12,10 +12,10 @@ const COMMITTEE = [
   },
   {
     post:  'সহ-সভাপতি (Vice President)',
-    name:  'আপনার নাম লিখুন',
-    dept:  'আপনার বিভাগ',
-    batch: '২০২১',
-    photo: '/images/placeholder.svg',
+    name:  'জান্নাতুল উম্মি তারিন ',
+    dept:  'প্রাণিবিদ্যা',
+    batch: '16th',
+    photo: 'D:\\CODE\\NFCH\\nfch\\public\\images\\photo_2026-07-25_00-13-14.jpg',
     
   },
   {
