@@ -15,7 +15,7 @@ const COMMITTEE = [
     name:  'জান্নাতুল উম্মি তারিন ',
     dept:  'প্রাণিবিদ্যা',
     batch: '16th',
-    photo: 'D:\\CODE\\NFCH\\nfch\\public\\images\\photo_2026-07-25_00-13-14.jpg',
+    photo: 'public/images/photo_2026-07-25_00-13-14.jpg',
     
   },
   {
