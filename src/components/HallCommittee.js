@@ -11,11 +11,19 @@ const COMMITTEE = [
     
   },
   {
+    post:  'কোষাধ্যক্ষ (Treasurer)',
+    name:  'আপনার নাম লিখুন',
+    dept:  'আপনার বিভাগ',
+    batch: '২০২১',
+    photo: '/images/placeholder.svg',
+    
+  },
+  {
     post:  'সহ-সভাপতি (Vice President)',
     name:  'জান্নাতুল উম্মি তারিন ',
     dept:  'প্রাণিবিদ্যা',
     batch: '16th',
-    photo: 'public/images/photo_2026-07-25_00-13-14.jpg',
+    photo: 'images/photo_2026-07-25_00-13-14.jpg',
     
   },
   {
@@ -34,14 +42,7 @@ const COMMITTEE = [
     photo: '/images/placeholder.svg',
     
   },
-  {
-    post:  'কোষাধ্যক্ষ (Treasurer)',
-    name:  'আপনার নাম লিখুন',
-    dept:  'আপনার বিভাগ',
-    batch: '২০২১',
-    photo: '/images/placeholder.svg',
-    
-  },
+  
   {
     post:  'সদস্য (Member)',
     name:  'আপনার নাম লিখুন',
